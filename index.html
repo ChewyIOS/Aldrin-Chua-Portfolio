@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aldrin Chua | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+
+<nav>
+  <strong class="brand">Aldrin Chua</strong>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero fade" id="home">
+  <div class="hero-content">
+    <img src="/Images/profile.jpg" alt="Aldrin Chua profile picture" class="profile-pic">
+
+    <header>
+      <p class="intro">Hello, I am</p>
+      <h1>Aldrin John Amir T. Chua</h1>
+      <p>Software Developer focused on building simple, clean, and reliable software.</p>
+    </header>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">View Projects</a>
+      <a class="btn btn-secondary" href="mailto:ajatchua@gmail.com">Let's Connect</a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about fade">
+  <h2>About</h2>
+  <p>
+    I am a Computer Science student interested in software development,
+    problem solving, and clean system design. I enjoy turning ideas into
+    practical systems that are easy to use and maintain.
+  </p>
+</section>
+
+<section id="skills" class="fade">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="skill">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML logo">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS logo">
+      <span>HTML &amp; CSS</span>
+    </div>
+    <div class="skill">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python logo">
+      <span>Python</span>
+    </div>
+    <div class="skill">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++ logo">
+      <span>C++</span>
+    </div>
+    <div class="skill">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java logo">
+      <span>Java</span>
+    </div>
+    <div class="skill">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL database logo">
+      <span>SQL &amp; Databases</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="fade">
+  <h2>Projects</h2>
+  <div class="projects">
+    <article class="project">
+      <p class="project-type">Desktop App</p>
+      <h3>Hotel Management System</h3>
+      <p>Win32 C++ application for room tracking, guest records, and reservations.</p>
+    </article>
+    <article class="project">
+      <p class="project-type">Utility Tool</p>
+      <h3>Number System Converter</h3>
+      <p>Python program for converting binary, decimal, octal, and hexadecimal values.</p>
+    </article>
+  </div>
+</section>
+
+<section id="contact" class="contact fade">
+  <h2>Contact</h2>
+  <div class="contact-list">
+    <p><strong>Facebook:</strong> <a href="https://www.facebook.com/aldrinchua01" target="_blank" rel="noreferrer">Aldrin Chua</a></p>
+    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/chewy_chuables/" target="_blank" rel="noreferrer">@chewy_chuables</a></p>
+    <p><strong>Email:</strong> <a href="mailto:ajatchua@gmail.com">ajatchua@gmail.com</a></p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Aldrin — Computer Science Portfolio
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('.fade');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>
