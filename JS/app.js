@@ -5,6 +5,12 @@
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Prevent browser from jumping to last scroll position on reload
+if (history.scrollRestoration) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
 /* ─────────────────────────────────────────────────────────────
    1. PAGE PRELOADER
    ───────────────────────────────────────────────────────────── */
@@ -115,23 +121,16 @@ function runPageAnimations() {
 
 
   /* ── HERO ENTRANCE SEQUENCE ─────────────────────────────── */
-  const heroTl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+  const heroTl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.2 } });
 
   heroTl
-    .from('.nav-inner',    { y: -30, opacity: 0, duration: 1 })
-    .from('#hero-eyebrow', { y: 24,  opacity: 0, duration: 0.9 }, '-=0.5')
-    .from('#hero-title',   { y: 90,  opacity: 0, duration: 1.2 }, '-=0.75')
-    .from('#hero-sub',     { y: 40,  opacity: 0, duration: 0.9 }, '-=0.85')
-    .from('#hero-cta',     { y: 28,  opacity: 0, duration: 0.8 }, '-=0.7')
-    .from('#hero-photo',   {
-      x: 60, opacity: 0, duration: 1.1,
-      ease: 'power3.out',
-      clipPath: 'inset(0 30% 0 0 round 32px)',
-      onComplete() {
-        gsap.to('#hero-photo', { clipPath: 'inset(0 0% 0 0 round 32px)', duration: 0 });
-      }
-    }, '-=1.1')
-    .from('#scroll-hint', { opacity: 0, duration: 0.8 }, '-=0.3');
+    .fromTo('.nav-inner',    { y: -30, opacity: 0 }, { y: 0, opacity: 1 })
+    .fromTo('#hero-eyebrow', { y: 24,  opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7')
+    .fromTo('#hero-title',   { y: 60,  opacity: 0 }, { y: 0, opacity: 1 }, '-=0.9')
+    .fromTo('#hero-sub',     { y: 30,  opacity: 0 }, { y: 0, opacity: 1 }, '-=1.0')
+    .fromTo('#hero-cta',     { y: 20,  opacity: 0 }, { y: 0, opacity: 1 }, '-=1.0')
+    .fromTo('.hero-photo-frame', { x: 40, opacity: 0 }, { x: 0, opacity: 1, ease: 'power3.out' }, '-=1.1')
+    .fromTo('.hero-scroll-hint', { opacity: 0 }, { opacity: 1 }, '-=0.5');
 
 
   /* ── BADGE PULSE & SCROLL LINE ──────────────────────────── */
@@ -179,7 +178,7 @@ function runPageAnimations() {
     gsap.fromTo(label,
       { y: 20, opacity: 0 },
       {
-        scrollTrigger: { trigger: label, start: 'top 88%', toggleActions: 'play none none reverse' },
+        scrollTrigger: { trigger: label, start: 'top 92%', toggleActions: 'play none none none' },
         y: 0, opacity: 1, duration: 0.7, ease: 'power3.out',
       }
     );
@@ -202,7 +201,7 @@ function runPageAnimations() {
 
     const spans = heading.querySelectorAll('.word-line > span');
     gsap.from(spans, {
-      scrollTrigger: { trigger: heading, start: 'top 88%', toggleActions: 'play none none reverse' },
+      scrollTrigger: { trigger: heading, start: 'top 92%', toggleActions: 'play none none none' },
       y: '120%', opacity: 0,
       duration: 0.9, stagger: 0.08, ease: 'power4.out',
     });
@@ -212,7 +211,7 @@ function runPageAnimations() {
   /* ── DATA-REVEAL — general fade-up ─────────────────────── */
   document.querySelectorAll('[data-reveal]').forEach(el => {
     gsap.from(el, {
-      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none reverse' },
+      scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
       y: 44, opacity: 0, duration: 0.9, ease: 'power3.out',
     });
   });
@@ -298,11 +297,11 @@ function runPageAnimations() {
       ease: 'none',
       scrollTrigger: {
         trigger: certSection,
-        start: 'center center', // Pin when the center of the section hits the center of the viewport
-        end: () => `+=${certGrid.scrollWidth}`, // The scroll distance equals the width of the grid
+        start: 'top top', // Start pinning when the section hits the top
+        end: () => `+=${certGrid.scrollWidth}`, 
         pin: true,
-        scrub: 1, // Smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-        invalidateOnRefresh: true // Recalculates the x distance on resize
+        scrub: 1, 
+        invalidateOnRefresh: true 
       }
     });
   }
@@ -374,5 +373,8 @@ function runPageAnimations() {
     width: '100%',
     ease: 'none',
   });
+
+  // Refresh ScrollTrigger to ensure all positions are calculated correctly after page load
+  ScrollTrigger.refresh();
 
 } // end runPageAnimations()
