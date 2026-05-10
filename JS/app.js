@@ -80,11 +80,11 @@ function runPageAnimations() {
   // Cursor grows on hoverable elements
   document.querySelectorAll('a, button, [data-magnetic], .skill-card, .project-row').forEach(el => {
     el.addEventListener('mouseenter', () => {
-      gsap.to(dot,  { scale: 3,  background: '#0071e3', duration: 0.3, ease: 'power2.out' });
+      gsap.to(dot,  { scale: 3,  background: '#28c840', duration: 0.3, ease: 'power2.out' });
       gsap.to(ring, { scale: 0,  duration: 0.25 });
     });
     el.addEventListener('mouseleave', () => {
-      gsap.to(dot,  { scale: 1,  background: '#1d1d1f', duration: 0.5, ease: 'elastic.out(1,0.4)' });
+      gsap.to(dot,  { scale: 1,  background: '#f5f5f7', duration: 0.5, ease: 'elastic.out(1,0.4)' });
       gsap.to(ring, { scale: 1,  duration: 0.5, ease: 'elastic.out(1,0.4)' });
     });
   });
@@ -102,7 +102,7 @@ function runPageAnimations() {
   document.querySelectorAll('.nav-link').forEach(link => {
     const line = document.createElement('span');
     line.style.cssText = `
-      display:block; height:1px; background:#1d1d1f;
+      display:block; height:1px; background:#28c840;
       transform:scaleX(0); transform-origin:left;
       position:absolute; bottom:-2px; left:0; right:0;
     `;
@@ -169,7 +169,7 @@ function runPageAnimations() {
   document.querySelectorAll('.section-label').forEach(label => {
     const underline = document.createElement('span');
     underline.style.cssText = `
-      display:block; height:2px; background:#0071e3;
+      display:block; height:2px; background:#28c840;
       transform:scaleX(0); transform-origin:left; border-radius:2px;
       margin-top:4px; opacity:1;
     `;
@@ -285,22 +285,37 @@ function runPageAnimations() {
     });
   });
 
-  /* ── CERTIFICATES: stagger slide in ────────────────────── */
-  gsap.from('[data-cert]', {
-    scrollTrigger: { trigger: '.certificates-section', start: 'top 85%', toggleActions: 'play none none reverse' },
-    y: 40, opacity: 0,
-    duration: 0.8, stagger: 0.15, ease: 'power3.out',
-  });
+  /* ── CERTIFICATES: horizontal scrub slider ───────────────── */
+  const certSection = document.querySelector('.certificates-section');
+  const certGrid = document.querySelector('.cert-grid');
+  
+  if (certSection && certGrid) {
+    // Calculate how far to move: the width of the grid minus the width of the viewport/container
+    // We add a little padding so the last item doesn't stick to the very edge.
+    
+    gsap.to(certGrid, {
+      x: () => -(certGrid.scrollWidth - certSection.offsetWidth + 80),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: certSection,
+        start: 'center center', // Pin when the center of the section hits the center of the viewport
+        end: () => `+=${certGrid.scrollWidth}`, // The scroll distance equals the width of the grid
+        pin: true,
+        scrub: 1, // Smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+        invalidateOnRefresh: true // Recalculates the x distance on resize
+      }
+    });
+  }
 
 
   // Project number pops on hover
   document.querySelectorAll('.project-row').forEach(row => {
     const num = row.querySelector('.project-num');
     row.addEventListener('mouseenter', () =>
-      gsap.to(num, { color: '#0071e3', scale: 1.15, duration: 0.3, ease: 'power2.out' })
+      gsap.to(num, { color: '#28c840', scale: 1.15, duration: 0.3, ease: 'power2.out' })
     );
     row.addEventListener('mouseleave', () =>
-      gsap.to(num, { color: '#6e6e73', scale: 1, duration: 0.4, ease: 'elastic.out(1,0.5)' })
+      gsap.to(num, { color: '#a1a1a6', scale: 1, duration: 0.4, ease: 'elastic.out(1,0.5)' })
     );
   });
 
@@ -345,7 +360,7 @@ function runPageAnimations() {
   const progressBar = document.createElement('div');
   progressBar.style.cssText = `
     position: fixed; top: 0; left: 0; height: 2px;
-    background: #0071e3; width: 0%; z-index: 9997;
+    background: #28c840; width: 0%; z-index: 9997;
     transform-origin: left; pointer-events: none;
   `;
   document.body.appendChild(progressBar);

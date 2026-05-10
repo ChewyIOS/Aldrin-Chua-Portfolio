@@ -1,119 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aldrin Chua | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Aldrin John Amir Chua – Computer Science student & Software Developer." />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Aldrin John Amir Chua | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="CSS/style.css">
 </head>
+
 <body>
 
-<nav>
-  <strong class="brand">Aldrin Chua</strong>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-
-<section class="hero fade" id="home">
-  <div class="hero-content">
-    <img src="/Images/profile.jpg" alt="Aldrin Chua profile picture" class="profile-pic">
-
-    <header>
-      <p class="intro">Hello, I am</p>
-      <h1>Aldrin John Amir T. Chua</h1>
-      <p>Software Developer focused on building simple, clean, and reliable software.</p>
-    </header>
-
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#projects">View Projects</a>
-      <a class="btn btn-secondary" href="mailto:ajatchua@gmail.com">Let's Connect</a>
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="preloader-name">
+      <span class="preloader-char">A</span>
+      <span class="preloader-char">l</span>
+      <span class="preloader-char">d</span>
+      <span class="preloader-char">r</span>
+      <span class="preloader-char">i</span>
+      <span class="preloader-char">n</span>
+      <span class="preloader-char" style="margin:0 8px"> </span>
+      <span class="preloader-char">C</span>
+      <span class="preloader-char">h</span>
+      <span class="preloader-char">u</span>
+      <span class="preloader-char">a</span>
+      <span class="preloader-char">.</span>
+    </div>
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill" id="preloader-fill"></div>
     </div>
   </div>
-</section>
 
-<section id="about" class="about fade">
-  <h2>About</h2>
-  <p>
-    I am a Computer Science student interested in software development,
-    problem solving, and clean system design. I enjoy turning ideas into
-    practical systems that are easy to use and maintain.
-  </p>
-</section>
-
-<section id="skills" class="fade">
-  <h2>Skills</h2>
-  <div class="skills">
-    <div class="skill">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML logo">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS logo">
-      <span>HTML &amp; CSS</span>
+  <!-- NAV -->
+  <nav id="nav" class="nav">
+    <div class="nav-inner">
+      <a href="#home" class="brand">Aldrin John Amir Chua</a>
+      <div class="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#certificates" class="nav-link">Certificates</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
     </div>
-    <div class="skill">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python logo">
-      <span>Python</span>
+  </nav>
+
+  <!-- HERO — Split layout: text left, photo right -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+
+      <!-- Left: text -->
+      <div class="hero-text">
+        <div id="hero-eyebrow" class="hero-eyebrow">Hello, I'm</div>
+        <h1 id="hero-title" class="hero-title">Aldrin<br>John Amir<br>Chua.</h1>
+        <p id="hero-sub" class="hero-sub">Software Developer &amp; CS Student.<br>Building clean, reliable systems.</p>
+        <div id="hero-cta" class="hero-cta">
+          <a href="#projects" class="btn-main" data-magnetic>View Work</a>
+          <a href="#contact" class="btn-ghost" data-magnetic>Let's Talk</a>
+        </div>
+      </div>
+
+      <!-- Right: profile photo -->
+      <div id="hero-photo" class="hero-photo">
+        <div class="hero-photo-frame">
+          <img src="Images/profile.jpg" alt="Aldrin John Amir Chua" class="hero-profile-img">
+          <div class="hero-photo-badge">
+            <span class="badge-dot"></span>
+            Available for work
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="skill">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++ logo">
-      <span>C++</span>
+
+    <div class="hero-scroll-hint" id="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
     </div>
-    <div class="skill">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java logo">
-      <span>Java</span>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about-section">
+    <div class="section-inner about-inner-centered">
+      <span class="section-label centered-label">About</span>
+      <h2 class="section-heading centered" data-split>Who I Am</h2>
+      <p class="about-body centered" data-reveal>
+        I'm a Computer Science student with a passion for software development,
+        problem solving, and clean system design.
+      </p>
+      <p class="about-body centered" data-reveal>
+        I enjoy turning ideas into practical systems that are easy to use and
+        maintain — from desktop applications to command-line tools.
+      </p>
+      <div class="about-stat-row centered" data-reveal>
+        <div class="about-stat"><span class="stat-num">2+</span><span class="stat-label">Years Coding</span></div>
+        <div class="about-stat"><span class="stat-num">6+</span><span class="stat-label">Languages</span></div>
+        <div class="about-stat"><span class="stat-num">2+</span><span class="stat-label">Projects Built</span></div>
+      </div>
     </div>
-    <div class="skill">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL database logo">
-      <span>SQL &amp; Databases</span>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section skills-section">
+    <div class="section-inner">
+      <span class="section-label">Expertise</span>
+      <h2 class="section-heading centered" data-split>My Skill Set</h2>
+      <div class="skills-grid">
+
+        <div class="skill-card" data-skill>
+          <div class="skill-card-icons">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+          </div>
+          <span class="skill-card-name">HTML &amp; CSS</span>
+          <span class="skill-card-level">Front-end</span>
+        </div>
+
+        <div class="skill-card" data-skill>
+          <div class="skill-card-icons">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              alt="JavaScript">
+          </div>
+          <span class="skill-card-name">JavaScript</span>
+          <span class="skill-card-level">Scripting</span>
+        </div>
+
+        <div class="skill-card" data-skill>
+          <div class="skill-card-icons">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+          </div>
+          <span class="skill-card-name">Python</span>
+          <span class="skill-card-level">General-purpose</span>
+        </div>
+
+        <div class="skill-card" data-skill>
+          <div class="skill-card-icons">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+          </div>
+          <span class="skill-card-name">C++</span>
+          <span class="skill-card-level">Systems</span>
+        </div>
+
+        <div class="skill-card" data-skill>
+          <div class="skill-card-icons">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+          </div>
+          <span class="skill-card-name">Java</span>
+          <span class="skill-card-level">OOP</span>
+        </div>
+
+        <div class="skill-card" data-skill>
+          <div class="skill-card-icons">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
+          </div>
+          <span class="skill-card-name">SQL &amp; Databases</span>
+          <span class="skill-card-level">Data</span>
+        </div>
+
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="projects" class="fade">
-  <h2>Projects</h2>
-  <div class="projects">
-    <article class="project">
-      <p class="project-type">Desktop App</p>
-      <h3>Hotel Management System</h3>
-      <p>Win32 C++ application for room tracking, guest records, and reservations.</p>
-    </article>
-    <article class="project">
-      <p class="project-type">Utility Tool</p>
-      <h3>Number System Converter</h3>
-      <p>Python program for converting binary, decimal, octal, and hexadecimal values.</p>
-    </article>
-  </div>
-</section>
+  <!-- PROJECTS -->
+  <section id="projects" class="section projects-section">
+    <div class="section-inner">
+      <span class="section-label" data-reveal>Work</span>
+      <h2 class="section-heading" data-split>Selected Projects</h2>
+      <div class="projects-list">
+        <article class="project-row" data-project>
+          <div class="project-num">01</div>
+          <div class="project-info">
+            <span class="project-tag">Desktop App · C++</span>
+            <h3 class="project-name">Hotel Management System</h3>
+            <p class="project-desc">A Win32 C++ application for room tracking, guest records, and reservations. Built
+              with a focus on reliability and intuitive UI flow.</p>
+          </div>
+          <div class="project-arrow">↗</div>
+        </article>
+        <article class="project-row" data-project>
+          <div class="project-num">02</div>
+          <div class="project-info">
+            <span class="project-tag">Utility Tool · Python</span>
+            <h3 class="project-name">Number System Converter</h3>
+            <p class="project-desc">A Python program for converting between binary, decimal, octal, and hexadecimal
+              values with a clean terminal interface.</p>
+          </div>
+          <div class="project-arrow">↗</div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<section id="contact" class="contact fade">
-  <h2>Contact</h2>
-  <div class="contact-list">
-    <p><strong>Facebook:</strong> <a href="https://www.facebook.com/aldrinchua01" target="_blank" rel="noreferrer">Aldrin Chua</a></p>
-    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/chewy_chuables/" target="_blank" rel="noreferrer">@chewy_chuables</a></p>
-    <p><strong>Email:</strong> <a href="mailto:ajatchua@gmail.com">ajatchua@gmail.com</a></p>
-  </div>
-</section>
+  <!-- CERTIFICATES -->
+  <section id="certificates" class="section certificates-section">
+    <div class="section-inner">
+      <span class="section-label centered-label" data-reveal>Achievements</span>
+      <h2 class="section-heading centered" data-split>Certifications</h2>
+      
+      <div class="cert-horizontal-wrapper">
+        <div class="cert-grid">
+          
+          <div class="cert-card" data-cert>
+          <div class="cert-image-wrap">
+            <img src="Images/Certificate1.jpg" alt="Certificate 1" class="cert-img">
+          </div>
+          <div class="cert-info">
+            <span class="cert-provider">Online Platform</span>
+            <h3 class="cert-title">Responsive Web Design</h3>
+            <span class="cert-date">Issued: 2024</span>
+          </div>
+        </div>
 
-<footer>
-  © 2026 Aldrin — Computer Science Portfolio
-</footer>
+        <div class="cert-card" data-cert>
+          <div class="cert-image-wrap">
+            <img src="Images/Certificate2.jpg" alt="Certificate 2" class="cert-img">
+          </div>
+          <div class="cert-info">
+            <span class="cert-provider">Tech Academy</span>
+            <h3 class="cert-title">Python Fundamentals</h3>
+            <span class="cert-date">Issued: 2025</span>
+          </div>
+        </div>
 
-<script>
-  const sections = document.querySelectorAll('.fade');
+      </div>
+      </div>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
-    });
-  }, { threshold: 0.15 });
+      <div class="cert-action centered" style="margin-top: 40px; text-align: center; opacity: 0;" data-reveal>
+        <a href="certificates.html" class="btn-ghost" data-magnetic>View All Certificates</a>
+      </div>
+    </div>
+  </section>
 
-  sections.forEach(section => observer.observe(section));
-</script>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-section">
+    <div class="section-inner contact-inner">
+      <span class="section-label" data-reveal>Contact</span>
+      <h2 class="contact-heading" data-split>Let's build<br>something great.</h2>
+      <div class="contact-links" data-reveal>
+        <a href="mailto:ajatchua@gmail.com" class="contact-link" data-magnetic>
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-value">ajatchua@gmail.com</span>
+        </a>
+        <a href="https://www.facebook.com/aldrinchua01" target="_blank" rel="noreferrer" class="contact-link"
+          data-magnetic>
+          <span class="contact-link-label">Facebook</span>
+          <span class="contact-link-value">Aldrin Chua</span>
+        </a>
+        <a href="https://www.instagram.com/chewy_chuables/" target="_blank" rel="noreferrer" class="contact-link"
+          data-magnetic>
+          <span class="contact-link-label">Instagram</span>
+          <span class="contact-link-value">@chewy_chuables</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-brand">Aldrin John Amir Chua</span>
+      <span class="footer-copy">© 2026 — CS Portfolio</span>
+    </div>
+  </footer>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="JS/app.js"></script>
 
 </body>
+
 </html>
