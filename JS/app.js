@@ -178,7 +178,7 @@ function runPageAnimations() {
     gsap.fromTo(label,
       { y: 20, opacity: 0 },
       {
-        scrollTrigger: { trigger: label, start: 'top 92%', toggleActions: 'play none none none' },
+        scrollTrigger: { trigger: label, start: 'top 92%', toggleActions: 'play none none reverse' },
         y: 0, opacity: 1, duration: 0.7, ease: 'power3.out',
       }
     );
@@ -189,40 +189,55 @@ function runPageAnimations() {
   });
 
 
-  /* ── HEADING WORD SPLIT — clip reveal ───────────────────── */
+  /* ── HEADING REVEAL — Smooth Blur Fade-Up ───────────────── */
   document.querySelectorAll('[data-split]').forEach(heading => {
-    const html = heading.innerHTML;
-    const parts = html.split(/(<br\s*\/?>|\s)/g);
-    heading.innerHTML = parts.map(p => {
-      if (/^<br/i.test(p)) return p;
-      if (/^\s+$/.test(p))  return ' ';
-      return `<span class="word-line"><span style="display:inline-block">${p}</span></span>`;
-    }).join('');
-
-    const spans = heading.querySelectorAll('.word-line > span');
-    gsap.from(spans, {
-      scrollTrigger: { trigger: heading, start: 'top 92%', toggleActions: 'play none none none' },
-      y: '120%', opacity: 0,
-      duration: 0.9, stagger: 0.08, ease: 'power4.out',
-    });
+    // We no longer need to split the words manually, which was causing glitches.
+    // Instead, we use a clean, sophisticated fade-up with a slight blur for a premium look.
+    gsap.fromTo(heading, 
+      { y: 30, opacity: 0, filter: 'blur(10px)' },
+      {
+        scrollTrigger: { 
+          trigger: heading, 
+          start: 'top 92%', 
+          toggleActions: 'play none none reverse' 
+        },
+        y: 0, 
+        opacity: 1, 
+        filter: 'blur(0px)',
+        duration: 1.2, 
+        ease: 'power4.out',
+      }
+    );
   });
 
 
   /* ── DATA-REVEAL — general fade-up ─────────────────────── */
   document.querySelectorAll('[data-reveal]').forEach(el => {
-    gsap.from(el, {
-      scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
-      y: 44, opacity: 0, duration: 0.9, ease: 'power3.out',
-    });
+    gsap.fromTo(el, 
+      { y: 44, opacity: 0 },
+      {
+        scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none reverse' },
+        y: 0, 
+        opacity: 1, 
+        duration: 0.9, 
+        ease: 'power3.out',
+      }
+    );
+  });
+  /* ── ABOUT SECTION: Hero-style staggered entrance ───────── */
+  const aboutTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.about-section',
+      start: 'top 85%',
+      toggleActions: 'play none none reverse'
+    }
   });
 
-
-  /* ── ABOUT: left column lines wipe in ───────────────────── */
-  gsap.from('.about-body', {
-    scrollTrigger: { trigger: '.about-section', start: 'top 72%', toggleActions: 'play none none reverse' },
-    y: 36, opacity: 0, duration: 0.85, stagger: 0.18, ease: 'power3.out',
-  });
-
+  aboutTl
+    .fromTo('.about-section .section-label', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 })
+    .fromTo('.about-section .section-heading', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '-=0.6')
+    .fromTo('.about-body', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.2 }, '-=0.7')
+    .fromTo('.about-stat-row', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.6');
 
   /* ── STAT COUNTERS ──────────────────────────────────────── */
   document.querySelectorAll('.stat-num').forEach(el => {

@@ -14,6 +14,27 @@
 
 <body>
 
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="preloader-name">
+      <span class="preloader-char">C</span>
+      <span class="preloader-char">E</span>
+      <span class="preloader-char">R</span>
+      <span class="preloader-char">T</span>
+      <span class="preloader-char">I</span>
+      <span class="preloader-char">F</span>
+      <span class="preloader-char">I</span>
+      <span class="preloader-char">C</span>
+      <span class="preloader-char">A</span>
+      <span class="preloader-char">T</span>
+      <span class="preloader-char">E</span>
+      <span class="preloader-char">S</span>
+    </div>
+    <div class="preloader-bar">
+      <div id="preloader-fill" class="preloader-bar-fill"></div>
+    </div>
+  </div>
+
   <!-- NAV -->
   <nav id="nav" class="nav scrolled">
     <div class="nav-inner">
@@ -81,29 +102,7 @@
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-    
-    // Simple reveal animation for the gallery page
-    window.addEventListener('DOMContentLoaded', () => {
-      gsap.from('.section-label, .section-heading, .about-body, .back-link', {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out'
-      });
-
-      gsap.from('.gallery-cert-card', {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out',
-        delay: 0.4
-      });
-    });
-  </script>
+  <script src="JS/app.js"></script>
 
 </body>
 

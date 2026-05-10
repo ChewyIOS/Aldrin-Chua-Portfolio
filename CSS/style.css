@@ -33,10 +33,11 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none;
 }
 
-a, button, [data-magnetic] { cursor: none; }
+body, a, button, [data-magnetic], p, span, h1, h2, h3, img { 
+  cursor: none !important; 
+}
 
 /* ============================================
    PAGE PRELOADER
@@ -450,8 +451,19 @@ body > .hero {
   margin-bottom: 64px;
 }
 
+.word-line {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+
 .section-heading.centered {
   text-align: center;
+}
+
+.about-body {
+  opacity: 0;
 }
 
 .word-line {
